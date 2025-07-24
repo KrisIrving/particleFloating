@@ -32,7 +32,9 @@ useDDTvoidfraction;
 
 modelType "A"; // A or B
 
-couplingInterval 50;
+couplingInterval 50; 
+
+// DEM timestep * couplingInterval = CFD deltaT
 
 voidFractionModel divided;//centre;//
 
