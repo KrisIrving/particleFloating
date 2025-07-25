@@ -46,11 +46,11 @@ fix     zwalls3  all wall/gran model hertz tangential history primitive type 1 z
 
 # particle distributions and insertion
 #region bc block -0.05 0.05 -0.0025 0.0025 0.05 0.1 units box
-region bc block 3e-3 7e-3 0 5e-3 3e-3 5e-3 units box
+region bc block 3e-3 7e-3 0 5e-3 3.5e-3 5e-3 units box
 fix     pts1 all particletemplate/sphere 1 atom_type 1 density constant 7.65e3 radius constant 35e-6
 fix     pdd1 all particledistribution/discrete 1 1 pts1 1.0
 
-fix     ins all insert/pack seed 100001 distributiontemplate pdd1 vel constant 0. 0. 0. insert_every once overlapcheck yes particles_in_region 20000 region bc
+fix     ins all insert/pack seed 100001 distributiontemplate pdd1 vel constant 0. 0. -0.4 insert_every once overlapcheck yes particles_in_region 20000 region bc
 
 # apply nve integration to all particles that are inserted as single particles
 fix     integr all nve/sphere
@@ -69,5 +69,9 @@ dump        dmp all custom 500 post/dump*.liggghts_init id type x y z ix iy iz v
 #node : f_couple_cfd[6]
 #cell id : f_couple_cfd[7]
 
-run         30000 upto
+fix		timecheck all check/timestep/gran 1 0.02 0.02
+run		1
+unfix		timecheck
+
+run         60000 upto
 write_restart   post/restart/liggghts.restart
