@@ -21,3 +21,4 @@ read
 
 rm $casePath/DEM/post/restart/*.*
 rm $casePath/DEM/post/restart/liggghts.restartCFDEM*
+touch $casePath/DEM/post/restart/Note.md
