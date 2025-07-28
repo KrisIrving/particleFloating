@@ -13,7 +13,7 @@ units           si
 region          reg block -5e-3 15e-3 0 5e-3 0 10e-3 units box
 create_box      1 reg
 
-neighbor        70e-6 bin
+neighbor        60e-6 bin
 neigh_modify    delay 0
 
 
@@ -48,6 +48,7 @@ fix     xwalls1  all wall/gran model hertz tangential history primitive type 1 x
 fix     xwalls2  all wall/gran model hertz tangential history primitive type 1 xplane 15e-3
 fix     ywalls1  all wall/gran model hertz tangential history primitive type 1 yplane 0
 fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 yplane 5e-3
+fix     xwalls3  all wall/gran model hertz tangential history primitive type 1 xplane 0
 # fix     zwalls3  all wall/gran model hertz tangential history primitive type 1 zplane 3e-3
 
 #fix cfdmesh all mesh/surface file ../CFD/mesh.stl type 1 
@@ -55,11 +56,61 @@ fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 y
 
 # particle distributions and insertion
 #region bc block -0.05 0.05 -0.0025 0.0025 0.05 0.1 units box
-region bc block -4e-3 -0.5e-3 0 5e-3 3.2e-3 8e-3 units box
-fix     pts1 all particletemplate/sphere 1 atom_type 1 density constant 7.65e3 radius constant 35e-6
-fix     pdd1 all particledistribution/discrete 1 1 pts1 1.0
+# region bc block -4e-3 -0.5e-3 0 5e-3 3.2e-3 8e-3 units box
+# fix     pts1 all particletemplate/sphere 1 atom_type 1 density constant 7.65e3 radius constant 35e-6
+# fix     pdd1 all particledistribution/discrete 1 1 pts1 1.0
 
-fix     ins all insert/pack seed 100001 distributiontemplate pdd1 vel constant 0. 0. -1.0 insert_every once overlapcheck yes particles_in_region 20000 region bc
+fix pts1 all particletemplate/sphere 10007 atom_type 1 density constant 7.65e3 radius constant 10.000000e-6
+fix pts2 all particletemplate/sphere 10009 atom_type 1 density constant 7.65e3 radius constant 10.475000e-6
+fix pts3 all particletemplate/sphere 10037 atom_type 1 density constant 7.65e3 radius constant 10.950000e-6
+fix pts4 all particletemplate/sphere 10039 atom_type 1 density constant 7.65e3 radius constant 11.425000e-6
+fix pts5 all particletemplate/sphere 10061 atom_type 1 density constant 7.65e3 radius constant 11.900000e-6
+fix pts6 all particletemplate/sphere 10067 atom_type 1 density constant 7.65e3 radius constant 12.375000e-6
+fix pts7 all particletemplate/sphere 10069 atom_type 1 density constant 7.65e3 radius constant 12.850000e-6
+fix pts8 all particletemplate/sphere 10079 atom_type 1 density constant 7.65e3 radius constant 13.325000e-6
+fix pts9 all particletemplate/sphere 10091 atom_type 1 density constant 7.65e3 radius constant 13.800000e-6
+fix pts10 all particletemplate/sphere 10093 atom_type 1 density constant 7.65e3 radius constant 14.275000e-6
+fix pts11 all particletemplate/sphere 10099 atom_type 1 density constant 7.65e3 radius constant 14.750000e-6
+fix pts12 all particletemplate/sphere 10103 atom_type 1 density constant 7.65e3 radius constant 15.225000e-6
+fix pts13 all particletemplate/sphere 10111 atom_type 1 density constant 7.65e3 radius constant 15.700000e-6
+fix pts14 all particletemplate/sphere 10133 atom_type 1 density constant 7.65e3 radius constant 16.175000e-6
+fix pts15 all particletemplate/sphere 10139 atom_type 1 density constant 7.65e3 radius constant 16.650000e-6
+fix pts16 all particletemplate/sphere 10141 atom_type 1 density constant 7.65e3 radius constant 17.475000e-6
+fix pts17 all particletemplate/sphere 10151 atom_type 1 density constant 7.65e3 radius constant 17.950000e-6
+fix pts18 all particletemplate/sphere 10159 atom_type 1 density constant 7.65e3 radius constant 18.425000e-6
+fix pts19 all particletemplate/sphere 10163 atom_type 1 density constant 7.65e3 radius constant 18.900000e-6
+fix pts20 all particletemplate/sphere 10169 atom_type 1 density constant 7.65e3 radius constant 19.375000e-6
+fix pts21 all particletemplate/sphere 10177 atom_type 1 density constant 7.65e3 radius constant 19.850000e-6
+fix pts22 all particletemplate/sphere 10181 atom_type 1 density constant 7.65e3 radius constant 20.325000e-6
+fix pts23 all particletemplate/sphere 10193 atom_type 1 density constant 7.65e3 radius constant 20.800000e-6
+fix pts24 all particletemplate/sphere 10211 atom_type 1 density constant 7.65e3 radius constant 21.275000e-6
+fix pts25 all particletemplate/sphere 10223 atom_type 1 density constant 7.65e3 radius constant 21.750000e-6
+fix pts26 all particletemplate/sphere 10243 atom_type 1 density constant 7.65e3 radius constant 22.225000e-6
+fix pts27 all particletemplate/sphere 10247 atom_type 1 density constant 7.65e3 radius constant 22.700000e-6
+fix pts28 all particletemplate/sphere 10253 atom_type 1 density constant 7.65e3 radius constant 23.175000e-6
+fix pts29 all particletemplate/sphere 10259 atom_type 1 density constant 7.65e3 radius constant 23.650000e-6
+fix pts30 all particletemplate/sphere 10267 atom_type 1 density constant 7.65e3 radius constant 24.125000e-6
+fix pts31 all particletemplate/sphere 10271 atom_type 1 density constant 7.65e3 radius constant 24.600000e-6
+fix pts32 all particletemplate/sphere 10273 atom_type 1 density constant 7.65e3 radius constant 25.075000e-6
+fix pts33 all particletemplate/sphere 10289 atom_type 1 density constant 7.65e3 radius constant 25.550000e-6
+fix pts34 all particletemplate/sphere 10301 atom_type 1 density constant 7.65e3 radius constant 26.025000e-6
+fix pts35 all particletemplate/sphere 10303 atom_type 1 density constant 7.65e3 radius constant 26.500000e-6
+fix pts36 all particletemplate/sphere 10313 atom_type 1 density constant 7.65e3 radius constant 26.975000e-6
+fix pts37 all particletemplate/sphere 10321 atom_type 1 density constant 7.65e3 radius constant 27.450000e-6
+fix pts38 all particletemplate/sphere 10331 atom_type 1 density constant 7.65e3 radius constant 27.925000e-6
+fix pts39 all particletemplate/sphere 10333 atom_type 1 density constant 7.65e3 radius constant 28.400000e-6
+fix pts40 all particletemplate/sphere 10337 atom_type 1 density constant 7.65e3 radius constant 28.875000e-6
+
+fix pdd all particledistribution/discrete 10343 40 pts1 0.000697 pts2 0.001258 pts3 0.002176 pts4 0.003614 pts5 0.005757 &
+pts6 0.008800 pts7 0.012904 pts8 0.018153 pts9 0.024502 pts10 0.031728 pts11 0.039419 pts12 0.046984 pts13 0.053729 pts14 0.058948 &
+pts15 0.062048 pts16 0.062309 pts17 0.061005 pts18 0.058892 pts19 0.056056 pts20 0.052609 pts21 0.048683 pts22 0.044419 pts23 0.039961 &
+pts24 0.035447 pts25 0.031003 pts26 0.026736 pts27 0.022734 pts28 0.019060 pts29 0.015756 pts30 0.012842 pts31 0.010321 pts32 0.008178 &
+pts33 0.006390 pts34 0.004923 pts35 0.003739 pts36 0.002800 pts37 0.002068 pts38 0.001506 pts39 0.001081 pts40 0.000765
+
+region  factory block -4e-3 -0.5e-3 0 5e-3 3.2e-3 8e-3 units box
+fix		ins all insert/pack seed 32452843 distributiontemplate pdd vel constant 0. 0. -0.1 insert_every once overlapcheck yes all_in yes region factory ntry_mc 10000 particles_in_region 20000
+
+# fix     ins all insert/pack seed 100001 distributiontemplate pdd1 vel constant 0. 0. -1.0 insert_every once overlapcheck yes particles_in_region 20000 region bc
 
 # apply nve integration to all particles that are inserted as single particles
 fix     integr all nve/sphere
@@ -77,11 +128,11 @@ unfix		timecheck
 
 # insert the first particles so that dump is not empty
 run         1
-dump        dmp all custom 500 post/dump*.liggghts_init id type x y z ix iy iz vx vy vz fx fy fz omegax omegay omegaz radius
-dump        dumpstl all mesh/stl 500 post/dump*.stl
+dump        dmp all custom 10000 post/dump*.liggghts_init id type x y z ix iy iz vx vy vz fx fy fz omegax omegay omegaz radius
+dump        dumpstl all mesh/stl 10000 post/dump*.stl
 #force : f_couple_cfd[0] f_couple_cfd[1] f_couple_cfd[2]
 #node : f_couple_cfd[6]
 #cell id : f_couple_cfd[7]
 
-run         60000 upto
+run         1000000 upto
 write_restart   post/restart/liggghts.restart
