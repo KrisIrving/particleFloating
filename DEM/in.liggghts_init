@@ -10,7 +10,7 @@ newton          off
 # cm - g- s
 units           si
 
-region          reg block -5e-3 15e-3 0 5e-3 0 10e-3 units box
+region          reg block -5e-3 15e-3 0 1e-3 0 10e-3 units box
 create_box      1 reg
 
 neighbor        60e-6 bin
@@ -32,7 +32,7 @@ pair_style  gran model hertz tangential history # Hertzian without cohesion
 pair_coeff  * *
 
 # timestep, gravity
-timestep    1e-7
+timestep    2e-7
 fix         gravi all gravity 9.81 vector 0.0 0.0 -1.0
 
 # load STL ASCII Mode
@@ -47,7 +47,7 @@ fix     zwalls2  all wall/gran model hertz tangential history primitive type 1 z
 fix     xwalls1  all wall/gran model hertz tangential history primitive type 1 xplane -5e-3
 fix     xwalls2  all wall/gran model hertz tangential history primitive type 1 xplane 15e-3
 fix     ywalls1  all wall/gran model hertz tangential history primitive type 1 yplane 0
-fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 yplane 5e-3
+fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 yplane 1e-3
 fix     xwalls3  all wall/gran model hertz tangential history primitive type 1 xplane 0
 # fix     zwalls3  all wall/gran model hertz tangential history primitive type 1 zplane 3e-3
 
@@ -107,8 +107,8 @@ pts15 0.062048 pts16 0.062309 pts17 0.061005 pts18 0.058892 pts19 0.056056 pts20
 pts24 0.035447 pts25 0.031003 pts26 0.026736 pts27 0.022734 pts28 0.019060 pts29 0.015756 pts30 0.012842 pts31 0.010321 pts32 0.008178 &
 pts33 0.006390 pts34 0.004923 pts35 0.003739 pts36 0.002800 pts37 0.002068 pts38 0.001506 pts39 0.001081 pts40 0.000765
 
-region  factory block -4e-3 -0.5e-3 0 5e-3 3.2e-3 8e-3 units box
-fix		ins all insert/pack seed 32452843 distributiontemplate pdd vel constant 0. 0. -0.1 insert_every once overlapcheck yes all_in yes region factory ntry_mc 10000 particles_in_region 20000
+region  factory block -4e-3 -0.5e-3 0 1e-3 3.2e-3 8e-3 units box
+fix		ins all insert/pack seed 32452843 distributiontemplate pdd vel constant 0. 0. -0.1 insert_every once overlapcheck yes all_in yes region factory ntry_mc 1000 particles_in_region 10000
 
 # fix     ins all insert/pack seed 100001 distributiontemplate pdd1 vel constant 0. 0. -1.0 insert_every once overlapcheck yes particles_in_region 20000 region bc
 
@@ -134,5 +134,5 @@ dump        dumpstl all mesh/stl 10000 post/dump*.stl
 #node : f_couple_cfd[6]
 #cell id : f_couple_cfd[7]
 
-run         1000000 upto
+run         800000 upto
 write_restart   post/restart/liggghts.restart

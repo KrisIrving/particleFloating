@@ -37,7 +37,7 @@ pair_style  gran model hertz tangential history # Hertzian without cohesion
 pair_coeff  * *
 
 # timestep, gravity
-timestep    1e-7
+timestep    2e-7
 fix         gravi all gravity 9.81 vector 0.0 0.0 -1.0
 
 # load STL ASCII Mode
@@ -52,7 +52,7 @@ fix     zwalls2  all wall/gran model hertz tangential history primitive type 1 z
 fix     xwalls1  all wall/gran model hertz tangential history primitive type 1 xplane -5e-3
 fix     xwalls2  all wall/gran model hertz tangential history primitive type 1 xplane 15e-3
 fix     ywalls1  all wall/gran model hertz tangential history primitive type 1 yplane 0
-fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 yplane 5e-3
+fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 yplane 1e-3
 #fix cfdmesh all mesh/surface file ../CFD/mesh.stl type 1 
 #fix walls all wall/gran model hertz tangential history mesh n_meshes 1 meshes cfdmesh
 
@@ -83,8 +83,8 @@ compute_modify  thermo_temp dynamic yes
 
 # 数据输出
 # timestep * dump = writeInterval
-dump        dmp all custom 500000 ../DEM/post/dump*.liggghts_run id type x y z vx vy vz fx fy fz f_dragforce[1] f_dragforce[2] f_dragforce[3] radius
-dump		dmpStl all mesh/stl 500000 ../DEM/post/dump*.stl
+dump        dmp all custom 50000 ../DEM/post/dump*.liggghts_run id type x y z vx vy vz fx fy fz f_dragforce[1] f_dragforce[2] f_dragforce[3] radius
+dump		dmpStl all mesh/stl 50000 ../DEM/post/dump*.stl
 
 # roller move 3mm/s
 fix rollermove all move/mesh mesh cad3 linear 3e-3 0 0
