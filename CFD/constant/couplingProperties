@@ -48,6 +48,7 @@ IOModel basicIO;
 
 probeModel off;
 
+// select mode
 dataExchangeModel  twoWayMPI;//twoWayFiles;//twoWayM2M;//oneWayVTK;//
 
 averagingModel dense;//dilute;//
@@ -267,6 +268,8 @@ dividedProps
     scaleUpVol 1.0;
 }
 
+
+// rerun need modify file name
 twoWayMPIProps
 {
     liggghtsPath "../DEM/in.liggghts_run";
