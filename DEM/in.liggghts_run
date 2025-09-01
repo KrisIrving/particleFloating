@@ -52,7 +52,7 @@ fix cad3 all mesh/surface file mesh/roller.stl type 1 scale 1e-3
 # walls
 fix     rollerwall all wall/gran model hertz tangential history cohesion sjkr mesh n_meshes 3 meshes cad1 cad2 cad3
 fix     xwalls1  all wall/gran model hertz tangential history primitive type 1 xplane -5e-3
-fix     xwalls2  all wall/gran model hertz tangential history primitive type 1 xplane 10e-3
+fix     xwalls2  all wall/gran model hertz tangential history primitive type 1 xplane 6e-3
 fix     ywalls1  all wall/gran model hertz tangential history primitive type 1 yplane 0
 fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 yplane 1e-3
 fix     zwalls1  all wall/gran model hertz tangential history primitive type 1 zplane 0

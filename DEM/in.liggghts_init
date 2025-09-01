@@ -43,7 +43,7 @@ fix cad3 all mesh/surface file mesh/roller.stl type 1 scale 1e-3
 # walls
 fix     rollerwall all wall/gran model hertz tangential history cohesion sjkr mesh n_meshes 3 meshes cad1 cad2 cad3
 fix     xwalls1  all wall/gran model hertz tangential history primitive type 1 xplane -5e-3
-fix     xwalls2  all wall/gran model hertz tangential history primitive type 1 xplane 10e-3
+fix     xwalls2  all wall/gran model hertz tangential history primitive type 1 xplane 6e-3
 fix     xwalls3  all wall/gran model hertz tangential history primitive type 1 xplane 0
 fix     ywalls1  all wall/gran model hertz tangential history primitive type 1 yplane 0
 fix     ywalls2  all wall/gran model hertz tangential history primitive type 1 yplane 1e-3
@@ -108,7 +108,7 @@ pts24 0.035447 pts25 0.031003 pts26 0.026736 pts27 0.022734 pts28 0.019060 pts29
 pts33 0.006390 pts34 0.004923 pts35 0.003739 pts36 0.002800 pts37 0.002068 pts38 0.001506 pts39 0.001081 pts40 0.000765
 
 region  factory block -4e-3 -0.5e-3 0 1e-3 3.2e-3 5.2e-3 units box
-fix		ins all insert/pack seed 32452843 distributiontemplate pdd vel constant 0. 0. -0.1 insert_every once overlapcheck yes all_in yes region factory ntry_mc 1000 particles_in_region 20000
+fix		ins all insert/pack seed 32452843 distributiontemplate pdd vel constant 0. 0. -0.1 insert_every once overlapcheck yes all_in yes region factory ntry_mc 1000 particles_in_region 2000
 
 # fix     ins all insert/pack seed 100001 distributiontemplate pdd1 vel constant 0. 0. -1.0 insert_every once overlapcheck yes particles_in_region 20000 region bc
 
