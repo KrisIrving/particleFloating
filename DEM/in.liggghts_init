@@ -10,7 +10,7 @@ newton          off
 # cm - g- s
 units           si
 
-region          reg block -5e-3 10e-3 0 1e-3 0 10e-3 units box
+region          reg block -5e-3 6e-3 0 1e-3 0 10e-3 units box
 create_box      1 reg
 
 neighbor        60e-6 bin
@@ -36,6 +36,7 @@ timestep    2e-7
 fix         gravi all gravity 9.81 vector 0.0 0.0 -1.0
 
 # load STL ASCII Mode
+# need to tranfer the STL from binary to ASCII by the paraview 
 fix cad1 all mesh/surface file mesh/blader_left.stl type 1 scale 1e-3
 fix cad2 all mesh/surface file mesh/blader_right.stl type 1 scale 1e-3
 fix cad3 all mesh/surface file mesh/roller.stl type 1 scale 1e-3
@@ -134,5 +135,5 @@ dump        dumpstl all mesh/stl 10000 post/dump*.stl
 #node : f_couple_cfd[6]
 #cell id : f_couple_cfd[7]
 
-run         200000 upto
+run         20000 upto
 write_restart   post/restart/liggghts.restart

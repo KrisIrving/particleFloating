@@ -19,7 +19,7 @@ logpath="$casePath"
 headerText="run_liggghts_init_DEM"
 logfileName="log_$headerText"
 solverName="in.liggghts_init"
-nrProcs=24 # 核心
+nrProcs=48 # 核心
 machineFileName="none"
 debugMode="off"
 #--------------------------------------------------------------------------------#

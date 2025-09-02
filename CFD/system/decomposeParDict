@@ -17,7 +17,7 @@ FoamFile
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-numberOfSubdomains  24;
+numberOfSubdomains  48;
 
 //- Keep owner and neighbour on same processor for faces in zones:
 // preserveFaceZones (heater solid1 solid3);
@@ -30,7 +30,7 @@ numberOfSubdomains  24;
 
 simpleCoeffs
 {
-    n           (6 4 1);
+    n           (6 2 4);
     delta       0.001;
 }
 
